@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimento 72 Resistência e Transformação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #062e21;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+        /* NAV */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,.6);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+        }
+        nav .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+        }
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.6);
+            z-index: -1;
+        }
+        .hero-content {
+            max-width: 900px;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 35px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #f4c400;
+            color: #000;
+            font-weight: 700;
+            margin: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: .3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        section {
+            padding: 110px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        /* STORY */
+        .story {
+            font-size: 18px;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+        /* CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .card {
+            background: #0f4a35;
+            padding: 30px;
+            border-radius: 12px;
+            transition: .4s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            background: #14654a;
+        }
+        /* TIMELINE */
+        .timeline {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .timeline-box {
+            background: #0f4a35;
+            padding: 35px;
+            border-radius: 12px;
+        }
+        .timeline-box h3 {
+            margin-bottom: 15px;
+        }
+        /* IMPACT */
+        .impact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .counter {
+            font-size: 48px;
+            font-weight: 800;
+            color: #f4c400;
+        }
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 40px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: .4s;
+        }
+        .gallery img:hover {
+            transform: scale(1.06);
+        }
+        /* SPONSORSHIP */
+        .sponsorship {
+            background: #0f4a35;
+            padding: 60px 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .sponsorship iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        /* PARTNERS */
+        .partners {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .partners img {
+            height: 70px;
+            filter: brightness(0) invert(1);
+            opacity: .9;
+        }
+        /* CONTACT */
+        form {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 40px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            background: #14654a;
+            color: #fff;
+        }
+        button {
+            padding: 15px 30px;
+            background: #f4c400;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        /* FOOTER */
+        footer {
+            background: #000;
+            padding: 50px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        /* RESPONSIVO */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 44px;
+            }
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            nav .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav>
+        <div class="nav-container">
+            <div><strong>MV72</strong></div>
+            <div class="nav-links">
+                <a href="#inicio">Projeto</a>
+                <a href="#missao">Missão</a>
+                <a href="#evento">Evento</a>
+                <a href="#impacto">Impacto</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#patrocinio">Patrocínio</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-river-54061080p.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Movimento 72</h1>
+            <p>Resistência e Transformação Social no Assentamento 72</p>
+            <a class="btn" href="#inicio">Conheça o Projeto</a>
+            <a class="btn" href="#evento">Participe</a>
+            <a class="btn" href="#contato">Apoie</a>
+        </div>
+    </section>
+
+    <!-- INICIO -->
+    <section id="inicio">
+        <div class="container">
+            <h2>O Início</h2>
+            <p class="story">
+                O Movimento 72 nasceu em 2024 a partir da união de jovens do Assentamento 72, no município de Ladário, Mato Grosso do Sul. 
+                Diante da invisibilidade social e da falta de políticas públicas, a juventude decidiu criar um movimento cultural e socioambiental 
+                para fortalecer a identidade da comunidade, valorizar a cultura pantaneira e promover educação ambiental.
+            </p>
+        </div>
+    </section>
+
+    <!-- MISSAO -->
+    <section id="missao">
+        <div class="container">
+            <h2>Missão do Movimento</h2>
+            <div class="grid">
+                <div class="card">Incentivar o protagonismo juvenil</div>
+                <div class="card">Fortalecer a identidade do assentamento</div>
+                <div class="card">Valorizar a cultura pantaneira</div>
+                <div class="card">Promover educação ambiental</div>
+                <div class="card">Estimular parcerias institucionais</div>
+                <div class="card">Dar visibilidade produção orgânica local</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTO -->
+    <section id="evento">
+        <div class="container">
+            <h2>Programação do Evento</h2>
+            <div class="timeline">
+                <div class="timeline-box">
+                    <h3>Manhã</h3>
+                    <p>Café da manhã comunitário, cinema educativo, oficinas ambientais, palestras educativas e gincanas para crianças e jovens.</p>
+                </div>
+                <div class="timeline-box">
+                    <h3>Tarde</h3>
+                    <p>Churrasco pantaneiro no fogo de chão com apresentações culturais como chamamé, vanerão, polca paraguaia, siriri e cururu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACTO -->
+    <section id="impacto">
+        <div class="container">
+            <h2>Impacto Esperado</h2>
+            <div class="impact">
+                <div>
+                    <div class="counter">500</div>
+                    <p>Pessoas impactadas</p>
+                </div>
+                <div>
+                    <div class="counter">50</div>
+                    <p>Jovens envolvidos</p>
+                </div>
+                <div>
+                    <div class="counter">10</div>
+                    <p>Atividades culturais</p>
+                </div>
+                <div>
+                    <div class="counter">5</div>
+                    <p>Parcerias institucionais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="galeria">
+        <div class="container">
+            <h2>Galeria da Comunidade</h2>
+            <div class="gallery">
+                <img src="WhatsApp-Image-2026-03-23-at-18.21.27.jpg" alt="Plantio comunitário">
+                <img src="WhatsApp-Image-2026-03-23-at-18.21.28-1.jpg" alt="Churrasco pantaneiro">
+                <img src="WhatsApp-Image-2026-03-23-at-18.21.29-2.jpg" alt="Horta familiar">
+                <img src="WhatsApp-Image-2026-03-23-at-18.21.29-1.jpg" alt="Feira orgânica">
+                <img src="WhatsApp-Image-2026-03-23-at-18.21.26.jpg" alt="Crianças na roça">
+                <img src="WhatsApp-Image-2026-03-23-at-18.21.28.jpg" alt="Trilha na comunidade">
+            </div>
+        </div>
+    </section>
+
+    <!-- PATROCINIO -->
+    <section id="patrocinio">
+        <div class="container">
+            <h2>Cotas de Patrocínio</h2>
+            <div class="sponsorship">
+                <p>Conheça as opções de apoio ao Movimento 72. Baixe a tabela completa:</p>
+                <a href="TABELA-DE-PRECO-JOSUE.pdf" class="btn" target="_blank">Download PDF</a>
+                <iframe src="TABELA-DE-PRECO-JOSUE.pdf"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARCEIROS -->
+    <section>
+        <div class="container">
+            <h2>Parceiros</h2>
+            <div class="partners">
+                <img src="https://dummyimage.com/200x80/ffffff/000000&text=ORI" alt="ORI">
+                <img src="https://dummyimage.com/300x80/ffffff/000000&text=Meu+Quintal+%C3%89+Maior+que+o+Mundo" alt="Meu Quintal">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <form>
+                <input placeholder="Nome" required>
+                <input placeholder="Email" required>
+                <textarea rows="5" placeholder="Mensagem"></textarea>
+                <button>Enviar mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Movimento 72 - Assentamento 72, Ladário, Mato Grosso do Sul, Brasil</p>
+    </footer>
+</body>
+</html>
